@@ -12,7 +12,7 @@ Vercel projenizin **Settings → Environment Variables** bölümüne gidin ve a�
 - **Description**: Google Gemini API anahtarı (Backend'de kullanılır)
 
 ### 2. VITE_API_URL
-- **Value**: `https://chat.comofx.com/api/chat`
+- **Value**: `https://chat.cmglobals.com/api/chat`
 - **Environment**: Production, Preview
 - **Description**: Production API endpoint URL'si
 
@@ -33,4 +33,4 @@ Vercel'da environment variable'ları ekledikten sonra:
 | Environment | VITE_API_URL |
 |-------------|--------------|
 | **Local** | `http://localhost:3001/api/chat` |
-| **Vercel (Production)** | `https://chat.comofx.com/api/chat` |
+| **Vercel (Production)** | `https://chat.cmglobals.com/api/chat` |

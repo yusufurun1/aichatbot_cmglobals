@@ -27,24 +27,24 @@ turndownService.addRule('remove-scripts', {
 });
 
 // Configuration
-const BASE_URL = 'https://comofx.com';
+const BASE_URL = 'https://cmglobals.com';
 const OUTPUT_FILE = path.join(process.cwd(), 'public', 'knowledge_base.json');
 const MAX_DEPTH = 5; // Deep dive mode
 const IGNORE_PATTERNS = ['/login', '/register', '/demo', '?lang=', '#', 'mailto:', 'tel:', 'javascript:', '.jpg', '.png', '.pdf'];
 
 // Explicitly add critical sections that might be missed or are important entry points
 const SEED_URLS = [
-    'https://comofx.com/',
-    'https://comofx.com/trading/account-types',
-    'https://comofx.com/trading/markets',
-    'https://comofx.com/trading/platforms',
-    'https://comofx.com/partnership/ib-program',
-    'https://comofx.com/corporate/about-us',
-    'https://comofx.com/corporate/regulation',
-    'https://comofx.com/knowledge-hub',
-    'https://comofx.com/knowledge-hub/blog',
-    'https://comofx.com/knowledge-hub/guides',
-    'https://comofx.com/knowledge-hub/glossary'
+    'https://cmglobals.com/',
+    'https://cmglobals.com/trading/account-types',
+    'https://cmglobals.com/trading/markets',
+    'https://cmglobals.com/trading/platforms',
+    'https://cmglobals.com/partnership/ib-program',
+    'https://cmglobals.com/corporate/about-us',
+    'https://cmglobals.com/corporate/regulation',
+    'https://cmglobals.com/knowledge-hub',
+    'https://cmglobals.com/knowledge-hub/blog',
+    'https://cmglobals.com/knowledge-hub/guides',
+    'https://cmglobals.com/knowledge-hub/glossary'
 ];
 
 interface KnowledgeChunk {

@@ -19,46 +19,46 @@ export const ChatBubblePopup: React.FC<ChatBubblePopupProps> = ({
     const isError = message.isError;
 
     return (
-        <div className={`comofx-bubble-wrapper ${isBot ? 'bot' : 'user'} ${!isLastInGroup ? 'grouped' : ''}`}>
-            <div className={`comofx-bubble-container ${isBot ? 'bot' : 'user'}`}>
+        <div className={`cmglobals-bubble-wrapper ${isBot ? 'bot' : 'user'} ${!isLastInGroup ? 'grouped' : ''}`}>
+            <div className={`cmglobals-bubble-container ${isBot ? 'bot' : 'user'}`}>
 
                 {/* Avatar - only show if first in group */}
                 {isBot && (
-                    <div className={`comofx-bubble-avatar ${isError ? 'error' : ''} ${!showAvatar ? 'invisible' : ''}`}>
+                    <div className={`cmglobals-bubble-avatar ${isError ? 'error' : ''} ${!showAvatar ? 'invisible' : ''}`}>
                         {isError ? (
                             <ErrorIconPopup />
                         ) : (
-                            <img src="logo-icon.svg" alt="ComoFX" className="comofx-avatar-img" />
+                            <img src="logo-icon.svg" alt="CM Globals" className="cmglobals-avatar-img" />
                         )}
                     </div>
                 )}
 
                 {/* Message Content */}
-                <div className={`comofx-bubble-content ${isBot ? (isError ? 'error' : 'bot') : 'user'}`}>
-                    <div className="comofx-bubble-text">
+                <div className={`cmglobals-bubble-content ${isBot ? (isError ? 'error' : 'bot') : 'user'}`}>
+                    <div className="cmglobals-bubble-text">
                         <ReactMarkdown
                             remarkPlugins={[remarkGfm]}
                             components={{
-                                p: ({ node, ...props }) => <p className="comofx-md-p" {...props} />,
-                                strong: ({ node, ...props }) => <strong className="comofx-md-strong" {...props} />,
-                                ul: ({ node, ...props }) => <ul className="comofx-md-ul" {...props} />,
-                                ol: ({ node, ...props }) => <ol className="comofx-md-ol" {...props} />,
-                                li: ({ node, ...props }) => <li className="comofx-md-li" {...props} />,
+                                p: ({ node, ...props }) => <p className="cmglobals-md-p" {...props} />,
+                                strong: ({ node, ...props }) => <strong className="cmglobals-md-strong" {...props} />,
+                                ul: ({ node, ...props }) => <ul className="cmglobals-md-ul" {...props} />,
+                                ol: ({ node, ...props }) => <ol className="cmglobals-md-ol" {...props} />,
+                                li: ({ node, ...props }) => <li className="cmglobals-md-li" {...props} />,
                                 table: ({ node, ...props }) => (
-                                    <div className="comofx-md-table-wrapper">
-                                        <table className="comofx-md-table" {...props} />
+                                    <div className="cmglobals-md-table-wrapper">
+                                        <table className="cmglobals-md-table" {...props} />
                                     </div>
                                 ),
-                                thead: ({ node, ...props }) => <thead className="comofx-md-thead" {...props} />,
-                                tbody: ({ node, ...props }) => <tbody className="comofx-md-tbody" {...props} />,
-                                tr: ({ node, ...props }) => <tr className="comofx-md-tr" {...props} />,
+                                thead: ({ node, ...props }) => <thead className="cmglobals-md-thead" {...props} />,
+                                tbody: ({ node, ...props }) => <tbody className="cmglobals-md-tbody" {...props} />,
+                                tr: ({ node, ...props }) => <tr className="cmglobals-md-tr" {...props} />,
                                 th: ({ node, ...props }) => (
-                                    <th className="comofx-md-th" {...props} />
+                                    <th className="cmglobals-md-th" {...props} />
                                 ),
                                 td: ({ node, ...props }) => (
-                                    <td className="comofx-md-td" {...props} />
+                                    <td className="cmglobals-md-td" {...props} />
                                 ),
-                                a: ({ node, ...props }) => <a className="comofx-md-link" target="_blank" rel="noopener noreferrer" {...props} />,
+                                a: ({ node, ...props }) => <a className="cmglobals-md-link" target="_blank" rel="noopener noreferrer" {...props} />,
                             }}
                         >
                             {message.text
@@ -69,12 +69,12 @@ export const ChatBubblePopup: React.FC<ChatBubblePopupProps> = ({
                                 .trim()}
                         </ReactMarkdown>
                         {message.text.includes('[LIVE_AGENT_BUTTON]') && (
-                            <div className="comofx-live-agent-container">
+                            <div className="cmglobals-live-agent-container">
                                 <button
-                                    className="comofx-live-agent-btn"
+                                    className="cmglobals-live-agent-btn"
                                     onClick={() => {
                                         localStorage.setItem('routeToLiveAgent', '1');
-                                        localStorage.setItem('comofx_chat_open', 'true');
+                                        localStorage.setItem('cmglobals_chat_open', 'true');
                                         // Send message to parent window
                                         if (window.parent && window.parent !== window) {
                                             window.parent.postMessage({
@@ -92,7 +92,7 @@ export const ChatBubblePopup: React.FC<ChatBubblePopupProps> = ({
 
                     {/* Timestamp - only show on last message of group */}
                     {isLastInGroup && (
-                        <div className={`comofx-bubble-time ${isBot ? '' : 'user'}`}>
+                        <div className={`cmglobals-bubble-time ${isBot ? '' : 'user'}`}>
                             {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </div>
                     )}

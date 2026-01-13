@@ -10,7 +10,7 @@ export default {
             colors: {
                 brand: {
                     bg: "#020617", // Slate 950 - Deep dark background
-                    primary: "#10b981", // Emerald 500 - Vibrant green (ComoFX branding)
+                    primary: "#10b981", // Emerald 500 - Vibrant green (CM Globals branding)
                     secondary: "#1e293b", // Slate 800 - Secondary surface
                     muted: "#94a3b8", // Slate 400 - Muted text
                 },

@@ -1,6 +1,6 @@
-# ComoFX AI Chatbot
+# CM Globals AI Chatbot
 
-AI-powered customer support chatbot for ComoFX using Google Gemini.
+AI-powered customer support chatbot for CM Globals using Google Gemini.
 
 ## 🚀 Quick Start
 
@@ -36,7 +36,7 @@ Add these environment variables in your Vercel project settings:
 | Variable | Value | Description |
 |----------|-------|-------------|
 | `GEMINI_API_KEY` | `your_api_key` | Google Gemini API key |
-| `VITE_API_URL` | `https://chat.comofx.com/api/chat` | Production API endpoint |
+| `VITE_API_URL` | `https://chat.cmglobals.com/api/chat` | Production API endpoint |
 
 ### Deploy
 
@@ -51,7 +51,7 @@ Vercel will automatically deploy on push.
 - `/services/geminiService.ts` - Frontend API service
 - `/server/` - Backend API server
 - `/components/` - React components
-- `/constants.ts` - ComoFX knowledge base
+- `/constants.ts` - CM Globals knowledge base
 
 ## 🔧 Tech Stack
 

@@ -45,7 +45,7 @@ def retrieve(query, k=5):
 def generate_answer(question, contexts):
     context_text = "\n\n".join(contexts)
     prompt = f"""
-    You are the ComoFX AI Specialist. Answer based ONLY on the context.
+    You are the CM Globals AI Specialist. Answer based ONLY on the context.
     Context: {context_text}
     Question: {question}
     Answer:

@@ -1,12 +1,12 @@
 /**
- * ComoFX Chat Widget - Easy Integration Script
+ * CM Globals Chat Widget - Easy Integration Script
  * ==============================================
  * 
- * Bu script, ComoFX Chat Widget'ı herhangi bir web sitesine
+ * Bu script, CM Globals Chat Widget'ı herhangi bir web sitesine
  * kolayca entegre etmek için tasarlanmıştır.
  * 
  * KULLANIM:
- * 1. Bu dosyayı sitenize ekleyin: <script src="comofx-widget.js"></script>
+ * 1. Bu dosyayı sitenize ekleyin: <script src="cmglobals-widget.js"></script>
  * 2. Script otomatik olarak widget'ı sayfanın sağ alt köşesine ekler.
  */
 
@@ -16,8 +16,8 @@
   // Default configuration
   const defaultConfig = {
     position: 'bottom-right',
-    chatUrl: 'https://chat.comofx.com/popup.html',
-    primaryColor: '#0CAA8C', // Green color from ComoFX logo
+    chatUrl: 'https://chat.cmglobals.com/popup.html',
+    primaryColor: '#0CAA8C', // Green color from CM Globals logo
     autoOpen: false,
     buttonSize: 60,
     widgetWidth: 400,
@@ -29,7 +29,7 @@
   };
 
   // Merge user config with defaults
-  const config = Object.assign({}, defaultConfig, window.ComoFXWidgetConfig || {});
+  const config = Object.assign({}, defaultConfig, window.CMGlobalsWidgetConfig || {});
 
   // State
   let isOpen = false;
@@ -40,23 +40,23 @@
 
   // Styles
   const styles = `
-    .comofx-widget-container {
+    .cmglobals-widget-container {
       position: fixed;
       z-index: ${config.zIndex};
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
-    .comofx-widget-container.bottom-right {
+    .cmglobals-widget-container.bottom-right {
       bottom: ${config.offsetY}px;
       right: ${config.offsetX}px;
     }
 
-    .comofx-widget-container.bottom-left {
+    .cmglobals-widget-container.bottom-left {
       bottom: ${config.offsetY}px;
       left: ${config.offsetX}px;
     }
 
-    .comofx-widget-toggle {
+    .cmglobals-widget-toggle {
       width: ${config.buttonSize}px;
       height: ${config.buttonSize}px;
       border-radius: 50%;
@@ -72,55 +72,55 @@
       overflow: hidden;
     }
 
-    .comofx-widget-toggle:hover {
+    .cmglobals-widget-toggle:hover {
       transform: scale(1.05);
       box-shadow: 0 6px 25px rgba(12, 170, 140, 0.5), 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
-    .comofx-widget-toggle:active {
+    .cmglobals-widget-toggle:active {
       transform: scale(0.95);
     }
 
-    .comofx-widget-toggle svg {
+    .cmglobals-widget-toggle svg {
       width: 28px;
       height: 28px;
       color: #ffffff;
       transition: all 0.3s ease;
     }
 
-    .comofx-widget-toggle.open svg.chat-icon {
+    .cmglobals-widget-toggle.open svg.chat-icon {
       opacity: 0;
       transform: rotate(90deg) scale(0);
     }
 
-    .comofx-widget-toggle.open svg.close-icon {
+    .cmglobals-widget-toggle.open svg.close-icon {
       opacity: 1;
       transform: rotate(0) scale(1);
     }
 
-    .comofx-widget-toggle svg.close-icon {
+    .cmglobals-widget-toggle svg.close-icon {
       position: absolute;
       opacity: 0;
       transform: rotate(-90deg) scale(0);
     }
 
     /* Pulse animation for attention */
-    .comofx-widget-toggle::before {
+    .cmglobals-widget-toggle::before {
       content: '';
       position: absolute;
       width: 100%;
       height: 100%;
       border-radius: 50%;
       background: ${config.primaryColor};
-      animation: comofx-widget-pulse 2s infinite;
+      animation: cmglobals-widget-pulse 2s infinite;
       z-index: -1;
     }
 
-    .comofx-widget-toggle:hover::before {
+    .cmglobals-widget-toggle:hover::before {
       animation: none;
     }
 
-    @keyframes comofx-widget-pulse {
+    @keyframes cmglobals-widget-pulse {
       0% {
         transform: scale(1);
         opacity: 0.5;
@@ -136,7 +136,7 @@
     }
 
     /* Chat window */
-    .comofx-widget-window {
+    .cmglobals-widget-window {
       position: absolute;
       width: ${config.widgetWidth}px;
       height: ${config.widgetHeight}px;
@@ -151,25 +151,25 @@
       background: #ffffff;
     }
 
-    .comofx-widget-container.bottom-right .comofx-widget-window {
+    .cmglobals-widget-container.bottom-right .cmglobals-widget-window {
       bottom: ${config.buttonSize + 16}px;
       right: 0;
       transform-origin: bottom right;
     }
 
-    .comofx-widget-container.bottom-left .comofx-widget-window {
+    .cmglobals-widget-container.bottom-left .cmglobals-widget-window {
       bottom: ${config.buttonSize + 16}px;
       left: 0;
       transform-origin: bottom left;
     }
 
-    .comofx-widget-window.open {
+    .cmglobals-widget-window.open {
       opacity: 1;
       transform: translateY(0) scale(1);
       pointer-events: auto;
     }
 
-    .comofx-widget-iframe {
+    .cmglobals-widget-iframe {
       width: 100%;
       height: 100%;
       border: none;
@@ -177,7 +177,7 @@
     }
 
     /* Loading state */
-    .comofx-widget-loading {
+    .cmglobals-widget-loading {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -189,16 +189,16 @@
       color: #64748b;
     }
 
-    .comofx-widget-spinner {
+    .cmglobals-widget-spinner {
       width: 32px;
       height: 32px;
       border: 3px solid #e2e8f0;
       border-top-color: ${config.primaryColor};
       border-radius: 50%;
-      animation: comofx-widget-spin 1s linear infinite;
+      animation: cmglobals-widget-spin 1s linear infinite;
     }
 
-    @keyframes comofx-widget-spin {
+    @keyframes cmglobals-widget-spin {
       to {
         transform: rotate(360deg);
       }
@@ -207,7 +207,7 @@
     /* Mobile responsive */
     @media (max-width: ${config.mobileBreakpoint}px) {
       /* White background overlay for keyboard */
-      .comofx-widget-backdrop {
+      .cmglobals-widget-backdrop {
         position: fixed;
         top: 0;
         left: 0;
@@ -218,11 +218,11 @@
         display: none;
       }
       
-      .comofx-widget-backdrop.visible {
+      .cmglobals-widget-backdrop.visible {
         display: block;
       }
 
-      .comofx-widget-window {
+      .cmglobals-widget-window {
         position: fixed;
         top: 0;
         left: 0;
@@ -239,24 +239,24 @@
         z-index: ${config.zIndex + 1};
       }
 
-      .comofx-widget-window.open {
+      .cmglobals-widget-window.open {
         transform: translateY(0);
       }
 
-      .comofx-widget-iframe {
+      .cmglobals-widget-iframe {
         width: 100% !important;
         height: 100% !important;
         min-height: 100% !important;
         background: #ffffff !important;
       }
 
-      .comofx-widget-toggle {
+      .cmglobals-widget-toggle {
         width: 56px;
         height: 56px;
         z-index: ${config.zIndex + 2};
       }
 
-      .comofx-widget-toggle.open {
+      .cmglobals-widget-toggle.open {
         position: fixed;
         top: 16px;
         right: 16px;
@@ -265,17 +265,17 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
       }
 
-      .comofx-widget-toggle.open svg {
+      .cmglobals-widget-toggle.open svg {
         color: #333333;
       }
 
-      .comofx-widget-toggle svg {
+      .cmglobals-widget-toggle svg {
         width: 24px;
         height: 24px;
       }
 
-      .comofx-widget-container.bottom-right,
-      .comofx-widget-container.bottom-left {
+      .cmglobals-widget-container.bottom-right,
+      .cmglobals-widget-container.bottom-left {
         bottom: 16px;
         right: 16px;
         left: auto;
@@ -305,48 +305,48 @@
 
     // Create white backdrop for mobile keyboard (placed first, behind everything)
     const backdrop = document.createElement('div');
-    backdrop.className = 'comofx-widget-backdrop';
-    backdrop.id = 'comofx-widget-backdrop';
+    backdrop.className = 'cmglobals-widget-backdrop';
+    backdrop.id = 'cmglobals-widget-backdrop';
     document.body.appendChild(backdrop);
 
     // Create container
     widgetContainer = document.createElement('div');
-    widgetContainer.className = `comofx-widget-container ${config.position}`;
-    widgetContainer.id = 'comofx-chat-widget';
+    widgetContainer.className = `cmglobals-widget-container ${config.position}`;
+    widgetContainer.id = 'cmglobals-chat-widget';
 
     // Create toggle button
     toggleButton = document.createElement('button');
-    toggleButton.className = 'comofx-widget-toggle';
+    toggleButton.className = 'cmglobals-widget-toggle';
     toggleButton.setAttribute('aria-label', 'Chat Widget Aç/Kapat');
     toggleButton.innerHTML = chatIcon + closeIcon;
     toggleButton.addEventListener('click', toggleWidget);
 
     // Create chat window
     const chatWindow = document.createElement('div');
-    chatWindow.className = 'comofx-widget-window';
-    chatWindow.id = 'comofx-widget-window';
+    chatWindow.className = 'cmglobals-widget-window';
+    chatWindow.id = 'cmglobals-widget-window';
 
     // Create loading indicator
     const loading = document.createElement('div');
-    loading.className = 'comofx-widget-loading';
-    loading.id = 'comofx-widget-loading';
+    loading.className = 'cmglobals-widget-loading';
+    loading.id = 'cmglobals-widget-loading';
     loading.innerHTML = `
-      <div class="comofx-widget-spinner"></div>
+      <div class="cmglobals-widget-spinner"></div>
       <span>Yükleniyor...</span>
     `;
     chatWindow.appendChild(loading);
 
     // Create iframe (lazy load)
     iframe = document.createElement('iframe');
-    iframe.className = 'comofx-widget-iframe';
-    iframe.id = 'comofx-widget-iframe';
-    iframe.title = 'ComoFX Chat Widget';
+    iframe.className = 'cmglobals-widget-iframe';
+    iframe.id = 'cmglobals-widget-iframe';
+    iframe.title = 'CM Globals Chat Widget';
     iframe.setAttribute('allow', 'microphone');
     iframe.style.display = 'none';
 
     iframe.addEventListener('load', function () {
       iframeLoaded = true;
-      document.getElementById('comofx-widget-loading').style.display = 'none';
+      document.getElementById('cmglobals-widget-loading').style.display = 'none';
       iframe.style.display = 'block';
     });
 
@@ -371,8 +371,8 @@
   function toggleWidget() {
     isOpen = !isOpen;
 
-    const chatWindow = document.getElementById('comofx-widget-window');
-    const backdrop = document.getElementById('comofx-widget-backdrop');
+    const chatWindow = document.getElementById('cmglobals-widget-window');
+    const backdrop = document.getElementById('cmglobals-widget-backdrop');
     const isMobile = window.innerWidth <= config.mobileBreakpoint;
 
     if (isOpen) {
@@ -412,7 +412,7 @@
   }
 
   // Public API
-  window.ComoFXWidget = {
+  window.CMGlobalsWidget = {
     open: function () {
       if (!isOpen) toggleWidget();
     },

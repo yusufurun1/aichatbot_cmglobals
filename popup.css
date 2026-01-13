@@ -20,7 +20,7 @@
 }
 
 /* ================== BASE WIDGET ================== */
-.comofx-popup-widget {
+.cmglobals-popup-widget {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -40,7 +40,7 @@
 
 /* Mobile full-screen support */
 @media (max-width: 768px) {
-    .comofx-popup-widget {
+    .cmglobals-popup-widget {
         max-width: 100% !important;
         max-height: 100% !important;
         width: 100vw !important;
@@ -59,7 +59,7 @@
 }
 
 /* ================== HEADER ================== */
-.comofx-popup-header {
+.cmglobals-popup-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -72,7 +72,7 @@
 }
 
 /* Decorative pattern overlay */
-.comofx-popup-header::before {
+.cmglobals-popup-header::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -84,7 +84,7 @@
     pointer-events: none;
 }
 
-.comofx-popup-header::after {
+.cmglobals-popup-header::after {
     content: '';
     position: absolute;
     bottom: -60%;
@@ -96,7 +96,7 @@
     pointer-events: none;
 }
 
-.comofx-popup-header-left {
+.cmglobals-popup-header-left {
     display: flex;
     align-items: center;
     gap: 14px;
@@ -104,7 +104,7 @@
     z-index: 1;
 }
 
-.comofx-popup-logo {
+.cmglobals-popup-logo {
     height: 32px;
     width: auto;
     object-fit: contain;
@@ -112,30 +112,30 @@
     transition: transform 0.3s ease;
 }
 
-.comofx-popup-logo:hover {
+.cmglobals-popup-logo:hover {
     transform: scale(1.05);
 }
 
-.comofx-popup-header-info {
+.cmglobals-popup-header-info {
     display: flex;
     flex-direction: column;
     gap: 3px;
 }
 
-.comofx-popup-title {
+.cmglobals-popup-title {
     font-size: 16px;
     font-weight: 700;
     letter-spacing: -0.02em;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.comofx-popup-status {
+.cmglobals-popup-status {
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
-.comofx-popup-status-dot {
+.cmglobals-popup-status-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -144,14 +144,14 @@
     animation: cmg-pulse 2s infinite;
 }
 
-.comofx-popup-status-text {
+.cmglobals-popup-status-text {
     font-size: 12px;
     opacity: 0.95;
     font-weight: 500;
     letter-spacing: 0.02em;
 }
 
-.comofx-popup-reset-btn {
+.cmglobals-popup-reset-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -168,20 +168,20 @@
     z-index: 1;
 }
 
-.comofx-popup-reset-btn:hover {
+.cmglobals-popup-reset-btn:hover {
     background: rgba(255, 255, 255, 0.25);
     transform: rotate(90deg);
 }
 
 /* ================== BODY / CHAT AREA ================== */
-.comofx-popup-body {
+.cmglobals-popup-body {
     flex: 1 1 auto;
     min-height: 0;
     overflow: hidden;
     background: linear-gradient(180deg, #f8fafb 0%, var(--cm-background) 100%);
 }
 
-.comofx-popup-messages {
+.cmglobals-popup-messages {
     height: 100%;
     overflow-y: auto;
     padding: 20px;
@@ -191,25 +191,25 @@
 }
 
 /* Scrollbar styling */
-.comofx-popup-messages::-webkit-scrollbar {
+.cmglobals-popup-messages::-webkit-scrollbar {
     width: 5px;
 }
 
-.comofx-popup-messages::-webkit-scrollbar-track {
+.cmglobals-popup-messages::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.comofx-popup-messages::-webkit-scrollbar-thumb {
+.cmglobals-popup-messages::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, var(--cm-primary) 0%, var(--cm-primary-dark) 100%);
     border-radius: 10px;
 }
 
-.comofx-popup-messages::-webkit-scrollbar-thumb:hover {
+.cmglobals-popup-messages::-webkit-scrollbar-thumb:hover {
     background: var(--cm-primary-dark);
 }
 
 /* ================== LOADING STATE ================== */
-.comofx-popup-loading {
+.cmglobals-popup-loading {
     display: flex;
     align-items: flex-start;
     gap: 12px;
@@ -217,7 +217,7 @@
     margin-top: 10px;
 }
 
-.comofx-popup-loading-avatar {
+.cmglobals-popup-loading-avatar {
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -231,13 +231,13 @@
     box-shadow: 0 4px 12px rgba(50, 128, 150, 0.2);
 }
 
-.comofx-popup-loading-avatar .comofx-avatar-img {
+.cmglobals-popup-loading-avatar .cmglobals-avatar-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.comofx-popup-loading-bubble {
+.cmglobals-popup-loading-bubble {
     background: var(--cm-background);
     border: 1px solid rgba(50, 128, 150, 0.15);
     border-radius: 18px;
@@ -246,14 +246,14 @@
     box-shadow: 0 4px 16px rgba(17, 61, 73, 0.08);
 }
 
-.comofx-loading-dots {
+.cmglobals-loading-dots {
     display: flex;
     gap: 5px;
     align-items: center;
     height: 22px;
 }
 
-.comofx-loading-dot {
+.cmglobals-loading-dot {
     width: 8px;
     height: 8px;
     background: linear-gradient(135deg, var(--cm-primary) 0%, var(--cm-primary-dark) 100%);
@@ -261,16 +261,16 @@
     animation: cmg-bounce 1.4s infinite ease-in-out both;
 }
 
-.comofx-loading-dot:nth-child(1) {
+.cmglobals-loading-dot:nth-child(1) {
     animation-delay: -0.32s;
 }
 
-.comofx-loading-dot:nth-child(2) {
+.cmglobals-loading-dot:nth-child(2) {
     animation-delay: -0.16s;
 }
 
 /* ================== INPUT AREA ================== */
-.comofx-popup-input-area {
+.cmglobals-popup-input-area {
     padding: 16px 20px 20px;
     background: var(--cm-background);
     border-top: 1px solid rgba(50, 128, 150, 0.1);
@@ -280,13 +280,13 @@
 
 /* Mobile: Ensure input stays at bottom and has white background for keyboard */
 @media (max-width: 768px) {
-    .comofx-popup-input-area {
+    .cmglobals-popup-input-area {
         padding-bottom: max(24px, env(safe-area-inset-bottom));
         background: var(--cm-background);
         position: relative;
     }
 
-    .comofx-popup-input-area::before {
+    .cmglobals-popup-input-area::before {
         content: '';
         position: fixed;
         bottom: 0;
@@ -298,7 +298,7 @@
         pointer-events: none;
     }
 
-    .comofx-popup-input-area::after {
+    .cmglobals-popup-input-area::after {
         content: '';
         position: fixed;
         bottom: -3000px;
@@ -312,7 +312,7 @@
 }
 
 /* Suggestions */
-.comofx-popup-suggestions {
+.cmglobals-popup-suggestions {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -324,11 +324,11 @@
     -webkit-overflow-scrolling: touch;
 }
 
-.comofx-popup-suggestions::-webkit-scrollbar {
+.cmglobals-popup-suggestions::-webkit-scrollbar {
     display: none;
 }
 
-.comofx-popup-suggestion-chip {
+.cmglobals-popup-suggestion-chip {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -346,7 +346,7 @@
     min-width: max-content;
 }
 
-.comofx-popup-suggestion-chip:hover {
+.cmglobals-popup-suggestion-chip:hover {
     background: linear-gradient(135deg, var(--cm-primary) 0%, var(--cm-primary-dark) 100%);
     border-color: var(--cm-primary);
     color: #ffffff;
@@ -355,14 +355,14 @@
 }
 
 /* Form */
-.comofx-popup-form {
+.cmglobals-popup-form {
     display: flex;
     align-items: center;
     gap: 10px;
     position: relative;
 }
 
-.comofx-popup-input {
+.cmglobals-popup-input {
     flex: 1;
     padding: 14px 18px;
     padding-right: 54px;
@@ -379,11 +379,11 @@
     overflow-y: hidden;
 }
 
-.comofx-popup-input::placeholder {
+.cmglobals-popup-input::placeholder {
     color: var(--cm-secondary);
 }
 
-.comofx-popup-input:focus {
+.cmglobals-popup-input:focus {
     border-color: var(--cm-primary);
     background: var(--cm-background);
     box-shadow:
@@ -391,12 +391,12 @@
         0 4px 16px rgba(50, 128, 150, 0.1);
 }
 
-.comofx-popup-input:disabled {
+.cmglobals-popup-input:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
 
-.comofx-popup-input-actions {
+.cmglobals-popup-input-actions {
     position: absolute;
     right: 8px;
     top: 50%;
@@ -405,7 +405,7 @@
     gap: 4px;
 }
 
-.comofx-popup-send-btn {
+.cmglobals-popup-send-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -420,58 +420,58 @@
     box-shadow: 0 4px 12px rgba(50, 128, 150, 0.3);
 }
 
-.comofx-popup-send-btn:hover:not(:disabled) {
+.cmglobals-popup-send-btn:hover:not(:disabled) {
     transform: scale(1.08);
     box-shadow: 0 6px 20px rgba(50, 128, 150, 0.4);
 }
 
-.comofx-popup-send-btn:active:not(:disabled) {
+.cmglobals-popup-send-btn:active:not(:disabled) {
     transform: scale(0.95);
 }
 
-.comofx-popup-send-btn:disabled {
+.cmglobals-popup-send-btn:disabled {
     opacity: 0;
     transform: scale(0.8);
     pointer-events: none;
 }
 
 /* ================== CHAT BUBBLES ================== */
-.comofx-bubble-wrapper {
+.cmglobals-bubble-wrapper {
     display: flex;
     width: 100%;
     animation: cmg-slideUp 0.4s ease;
     margin-bottom: 4px;
 }
 
-.comofx-bubble-wrapper.grouped {
+.cmglobals-bubble-wrapper.grouped {
     margin-bottom: 2px;
 }
 
-.comofx-bubble-wrapper.bot {
+.cmglobals-bubble-wrapper.bot {
     justify-content: flex-start;
 }
 
-.comofx-bubble-wrapper.user {
+.cmglobals-bubble-wrapper.user {
     justify-content: flex-end;
 }
 
-.comofx-bubble-container {
+.cmglobals-bubble-container {
     display: flex;
     max-width: 85%;
     gap: 10px;
 }
 
-.comofx-bubble-container.bot {
+.cmglobals-bubble-container.bot {
     flex-direction: row;
     gap: 14px;
     margin-left: 8px;
 }
 
-.comofx-bubble-container.user {
+.cmglobals-bubble-container.user {
     flex-direction: row-reverse;
 }
 
-.comofx-bubble-avatar {
+.cmglobals-bubble-avatar {
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -487,27 +487,27 @@
     transition: transform 0.3s ease;
 }
 
-.comofx-bubble-avatar:hover {
+.cmglobals-bubble-avatar:hover {
     transform: scale(1.08);
 }
 
-.comofx-bubble-avatar.invisible {
+.cmglobals-bubble-avatar.invisible {
     visibility: hidden;
 }
 
-.comofx-bubble-avatar.error {
+.cmglobals-bubble-avatar.error {
     background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
     border-color: #ef4444;
     color: #ef4444;
 }
 
-.comofx-avatar-img {
+.cmglobals-avatar-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.comofx-bubble-content {
+.cmglobals-bubble-content {
     padding: 12px 16px;
     border-radius: 18px;
     position: relative;
@@ -515,7 +515,7 @@
     box-sizing: border-box;
 }
 
-.comofx-bubble-content.bot {
+.cmglobals-bubble-content.bot {
     background: var(--cm-background);
     border: 1px solid rgba(50, 128, 150, 0.12);
     border-top-left-radius: 4px;
@@ -524,75 +524,75 @@
     box-shadow: 0 4px 16px rgba(17, 61, 73, 0.06);
 }
 
-.comofx-bubble-content.error {
+.cmglobals-bubble-content.error {
     background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
     border: 1px solid #fecaca;
     border-top-left-radius: 4px;
     color: #7f1d1d;
 }
 
-.comofx-bubble-content.user {
+.cmglobals-bubble-content.user {
     background: linear-gradient(135deg, var(--cm-primary) 0%, var(--cm-primary-dark) 100%);
     color: #ffffff;
     border-top-right-radius: 4px;
     box-shadow: 0 4px 16px rgba(50, 128, 150, 0.25);
 }
 
-.comofx-bubble-text {
+.cmglobals-bubble-text {
     font-size: 14px;
     line-height: 1.6;
     word-break: break-word;
     overflow-wrap: break-word;
 }
 
-.comofx-bubble-time {
+.cmglobals-bubble-time {
     font-size: 10px;
     margin-top: 6px;
     opacity: 0.5;
 }
 
-.comofx-bubble-time.user {
+.cmglobals-bubble-time.user {
     text-align: right;
     opacity: 0.75;
 }
 
 /* ================== MARKDOWN STYLES ================== */
-.comofx-md-p {
+.cmglobals-md-p {
     margin-bottom: 10px;
 }
 
-.comofx-md-p:last-child {
+.cmglobals-md-p:last-child {
     margin-bottom: 0;
 }
 
-.comofx-md-strong {
+.cmglobals-md-strong {
     font-weight: 700;
     color: var(--cm-primary-dark);
 }
 
-.comofx-bubble-content.user .comofx-md-strong {
+.cmglobals-bubble-content.user .cmglobals-md-strong {
     color: #ffffff;
 }
 
-.comofx-md-ul,
-.comofx-md-ol {
+.cmglobals-md-ul,
+.cmglobals-md-ol {
     margin: 10px 0;
     padding-left: 22px;
 }
 
-.comofx-md-ul {
+.cmglobals-md-ul {
     list-style-type: disc;
 }
 
-.comofx-md-ol {
+.cmglobals-md-ol {
     list-style-type: decimal;
 }
 
-.comofx-md-li {
+.cmglobals-md-li {
     margin-bottom: 6px;
 }
 
-.comofx-md-table-wrapper {
+.cmglobals-md-table-wrapper {
     overflow-x: auto;
     width: 100%;
     margin: 12px 0;
@@ -602,17 +602,17 @@
     box-shadow: 0 2px 8px rgba(17, 61, 73, 0.04);
 }
 
-.comofx-md-table {
+.cmglobals-md-table {
     min-width: 100%;
     font-size: 12px;
     border-collapse: collapse;
 }
 
-.comofx-md-thead {
+.cmglobals-md-thead {
     background: linear-gradient(135deg, rgba(50, 128, 150, 0.08) 0%, rgba(17, 61, 73, 0.08) 100%);
 }
 
-.comofx-md-th {
+.cmglobals-md-th {
     padding: 10px 12px;
     text-align: left;
     font-weight: 700;
@@ -621,21 +621,21 @@
     white-space: nowrap;
 }
 
-.comofx-md-td {
+.cmglobals-md-td {
     padding: 10px 12px;
     border-bottom: 1px solid rgba(50, 128, 150, 0.08);
     color: var(--cm-text-main);
 }
 
-.comofx-md-tr:last-child .comofx-md-td {
+.cmglobals-md-tr:last-child .cmglobals-md-td {
     border-bottom: none;
 }
 
-.comofx-md-tr:hover {
+.cmglobals-md-tr:hover {
     background: rgba(50, 128, 150, 0.04);
 }
 
-.comofx-md-link {
+.cmglobals-md-link {
     color: var(--cm-primary);
     text-decoration: none;
     font-weight: 600;
@@ -643,19 +643,19 @@
     border-bottom: 1px solid transparent;
 }
 
-.comofx-md-link:hover {
+.cmglobals-md-link:hover {
     color: var(--cm-primary-dark);
     border-bottom-color: var(--cm-primary);
 }
 
 /* ================== LIVE AGENT BUTTON ================== */
-.comofx-live-agent-container {
+.cmglobals-live-agent-container {
     margin-top: 14px;
     display: flex;
     justify-content: center;
 }
 
-.comofx-live-agent-btn {
+.cmglobals-live-agent-btn {
     background: linear-gradient(135deg, var(--cm-highlight) 0%, #7a4628 100%);
     color: #ffffff;
     border: none;
@@ -673,7 +673,7 @@
     overflow: hidden;
 }
 
-.comofx-live-agent-btn::before {
+.cmglobals-live-agent-btn::before {
     content: '';
     position: absolute;
     top: 0;
@@ -684,16 +684,16 @@
     transition: left 0.5s ease;
 }
 
-.comofx-live-agent-btn:hover {
+.cmglobals-live-agent-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 28px rgba(150, 88, 50, 0.4);
 }
 
-.comofx-live-agent-btn:hover::before {
+.cmglobals-live-agent-btn:hover::before {
     left: 100%;
 }
 
-.comofx-live-agent-btn:active {
+.cmglobals-live-agent-btn:active {
     transform: translateY(-1px);
 }
 
@@ -750,6 +750,6 @@
 }
 
 /* ================== WELCOME MESSAGE ENHANCEMENT ================== */
-.comofx-bubble-content.bot:first-of-type {
+.cmglobals-bubble-content.bot:first-of-type {
     background: linear-gradient(135deg, var(--cm-background) 0%, rgba(50, 128, 150, 0.03) 100%);
 }

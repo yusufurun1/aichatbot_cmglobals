@@ -13,18 +13,18 @@ export const ErrorIconPopup = () => (
 );
 
 export const LoadingDots = () => (
-    <div className="comofx-loading-dots">
-        <div className="comofx-loading-dot"></div>
-        <div className="comofx-loading-dot"></div>
-        <div className="comofx-loading-dot"></div>
+    <div className="cmglobals-loading-dots">
+        <div className="cmglobals-loading-dot"></div>
+        <div className="cmglobals-loading-dot"></div>
+        <div className="cmglobals-loading-dot"></div>
     </div>
 );
 
-export const ComoLogoSmall = () => (
+export const CMGlobalsLogoSmall = () => (
     <img
         src="logo.png"
-        alt="ComoFX"
-        className="comofx-popup-logo"
+        alt="CM Globals"
+        className="cmglobals-popup-logo"
         onError={(e) => {
             e.currentTarget.style.display = 'none';
         }}

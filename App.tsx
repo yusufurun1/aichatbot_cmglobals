@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { SendIcon, LoadingDots, BotIcon, ComoLogo, MicIcon, StopIcon } from './components/Icons';
+import { SendIcon, LoadingDots, BotIcon, CMGlobalsLogo, MicIcon, StopIcon } from './components/Icons';
 import { ChatBubble } from './components/ChatBubble';
 import { Message, Language } from './types';
 import { sendMessage, initializeChat } from './services/geminiService';
@@ -220,7 +220,7 @@ const App: React.FC = () => {
       {/* Header Bar */}
       <header className="flex-none w-full glass-card z-30 px-4 md:px-6 py-3 flex items-center justify-between shadow-lg shadow-black/20">
         <div className="flex items-center gap-3 md:gap-4">
-          <ComoLogo />
+          <CMGlobalsLogo />
           <div className="hidden sm:flex flex-col">
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse-glow"></span>
@@ -379,7 +379,7 @@ const App: React.FC = () => {
                 </p>
                 <div className="flex justify-center items-center gap-2 mt-1 opacity-40">
                   <svg className="w-2.5 h-2.5 text-brand-primary" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" /></svg>
-                  <span className="text-[9px] font-medium tracking-wide">ComoFX Intelligence v2.3</span>
+                  <span className="text-[9px] font-medium tracking-wide">CM Globals Intelligence v2.3</span>
                 </div>
               </div>
 

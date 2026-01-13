@@ -45,14 +45,14 @@ export const LoadingDots = () => (
   </div>
 );
 
-export const ComoLogo = () => (
+export const CMGlobalsLogo = () => (
   /* 
     REPLACED WITH PNG AS REQUESTED 
     Ensure 'logo.png' exists in your public/root folder.
   */
-  <img 
-    src="logo.png" 
-    alt="ComoFX Global Markets" 
+  <img
+    src="logo.png"
+    alt="CM Globals Global Markets"
     className="h-[42px] w-auto object-contain select-none pointer-events-none"
     onError={(e) => {
       // Fallback in case image is missing during preview, preventing ugly broken icon

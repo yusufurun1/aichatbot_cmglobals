@@ -1,6 +1,6 @@
 [
     {
-        "question": "What is the correct FSCA license number for ComoFX?",
+        "question": "What is the correct FSCA license number for CM Globals?",
         "ground_truth": "The correct FSCA license number is 47645.",
         "context": [
             "The ONLY correct FSCA License Number is 47645."
@@ -14,8 +14,8 @@
         ]
     },
     {
-        "question": "Does ComoFX offer a VPS service?",
-        "ground_truth": "ComoFX offers low latency execution and co-location, and often supports VPS for automated trading, though specific free VPS terms usually require a minimum deposit/volume.",
+        "question": "Does CM Globals offer a VPS service?",
+        "ground_truth": "CM Globals offers low latency execution and co-location, and often supports VPS for automated trading, though specific free VPS terms usually require a minimum deposit/volume.",
         "context": [
             "<50ms avg latency, 99.9% uptime guarantee, 4 data centers (London, Dubai, Singapore, New York)"
         ]

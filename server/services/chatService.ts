@@ -116,7 +116,7 @@ export const processChatMessage = async (lastUserMessage: string, history: ChatM
         if (relevantChunks.length > 0) {
             const context = relevantChunks.map(c => `[Source: ${c.title}](${c.url})\n${c.content}`).join("\n\n---\n\n");
             augmentedMessage = `
-You are the authorized AI Support Agent for ComoFX.
+You are the authorized AI Support Agent for CM Globals.
 Answer the user's question using the following context and your instructions.
 - Prioritize context for website details but ALWAYS follow SYSTEM INSTRUCTIONS for logic.
 - NEVER include contact numbers/emails unless asked.
@@ -183,7 +183,7 @@ Question: ${lastUserMessage}
         };
 
         const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
             {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

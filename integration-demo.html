@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ComoFX Widget Entegrasyon Örneği</title>
+    <title>CM Globals Widget Entegrasyon Örneği</title>
     <style>
         * {
             margin: 0;
@@ -127,15 +127,15 @@
 
 <body>
     <div class="container">
-        <h1>🤖 ComoFX Chat Widget</h1>
+        <h1>🤖 CM Globals Chat Widget</h1>
         <p class="subtitle">Web sitenize kolayca entegre edilebilen AI chat destek sistemi</p>
 
         <div class="section">
             <h2>📦 Basit Entegrasyon</h2>
             <p>Widget'ı sitenize eklemek için aşağıdaki kodu <code>&lt;/body&gt;</code> etiketinden hemen önce ekleyin:
             </p>
-            <pre><code><span class="comment">&lt;!-- ComoFX Chat Widget --&gt;</span>
-&lt;script src="<span class="highlight">https://chat.comofx.com/comofx-widget.js</span>"&gt;&lt;/script&gt;</code></pre>
+            <pre><code><span class="comment">&lt;!-- CM Globals Chat Widget --&gt;</span>
+&lt;script src="<span class="highlight">https://chat.cmglobals.com/cmglobals-widget.js</span>"&gt;&lt;/script&gt;</code></pre>
         </div>
 
         <div class="section">
@@ -143,9 +143,9 @@
             <p>Widget davranışını özelleştirmek için script'ten önce konfigürasyon ekleyebilirsiniz:</p>
             <pre><code><span class="comment">&lt;!-- Widget Konfigürasyonu (İsteğe Bağlı) --&gt;</span>
 &lt;script&gt;
-  window.ComoFXWidgetConfig = {
+  window.CMGlobalsWidgetConfig = {
     position: '<span class="highlight">bottom-right</span>',  <span class="comment">// 'bottom-right' veya 'bottom-left'</span>
-    chatUrl: '<span class="highlight">https://chat.comofx.com/popup.html</span>',
+    chatUrl: '<span class="highlight">https://chat.cmglobals.com/popup.html</span>',
     primaryColor: '<span class="highlight">#2563EB</span>',      <span class="comment">// Ana renk</span>
     autoOpen: <span class="highlight">false</span>,                 <span class="comment">// Sayfa yüklenince otomatik aç</span>
     buttonSize: <span class="highlight">60</span>,                  <span class="comment">// Buton boyutu (px)</span>
@@ -156,39 +156,39 @@
     offsetY: <span class="highlight">20</span>                      <span class="comment">// Dikey mesafe (px)</span>
   };
 &lt;/script&gt;
-&lt;script src="https://chat.comofx.com/comofx-widget.js"&gt;&lt;/script&gt;</code></pre>
+&lt;script src="https://chat.cmglobals.com/cmglobals-widget.js"&gt;&lt;/script&gt;</code></pre>
         </div>
 
         <div class="section">
             <h2>🎮 JavaScript API</h2>
             <p>Widget'ı programatik olarak kontrol edebilirsiniz:</p>
             <pre><code><span class="comment">// Widget'ı aç</span>
-ComoFXWidget.<span class="highlight">open</span>();
+CMGlobalsWidget.<span class="highlight">open</span>();
 
 <span class="comment">// Widget'ı kapat</span>
-ComoFXWidget.<span class="highlight">close</span>();
+CMGlobalsWidget.<span class="highlight">close</span>();
 
 <span class="comment">// Aç/Kapa değiştir</span>
-ComoFXWidget.<span class="highlight">toggle</span>();
+CMGlobalsWidget.<span class="highlight">toggle</span>();
 
 <span class="comment">// Açık mı kontrol et</span>
-const isOpen = ComoFXWidget.<span class="highlight">isOpen</span>();
+const isOpen = CMGlobalsWidget.<span class="highlight">isOpen</span>();
 
 <span class="comment">// Widget'ı tamamen kaldır</span>
-ComoFXWidget.<span class="highlight">destroy</span>();</code></pre>
+CMGlobalsWidget.<span class="highlight">destroy</span>();</code></pre>
 
-            <button class="button" onclick="ComoFXWidget.open()">Widget'ı Aç</button>
-            <button class="button secondary" onclick="ComoFXWidget.close()">Widget'ı Kapat</button>
+            <button class="button" onclick="CMGlobalsWidget.open()">Widget'ı Aç</button>
+            <button class="button secondary" onclick="CMGlobalsWidget.close()">Widget'ı Kapat</button>
         </div>
 
         <div class="section">
             <h2>🔗 Özel Butonlarla Tetikleme</h2>
             <p>Kendi butonlarınızla widget'ı açabilirsiniz:</p>
-            <pre><code>&lt;button onclick="<span class="highlight">ComoFXWidget.open()</span>"&gt;
+            <pre><code>&lt;button onclick="<span class="highlight">CMGlobalsWidget.open()</span>"&gt;
   Destek Al
 &lt;/button&gt;
 
-&lt;a href="#" onclick="<span class="highlight">ComoFXWidget.toggle(); return false;</span>"&gt;
+&lt;a href="#" onclick="<span class="highlight">CMGlobalsWidget.toggle(); return false;</span>"&gt;
   Yardım mı lazım?
 &lt;/a&gt;</code></pre>
         </div>
@@ -199,18 +199,18 @@ ComoFXWidget.<span class="highlight">destroy</span>();</code></pre>
         </div>
     </div>
 
-    <!-- ComoFX Chat Widget Integration -->
+    <!-- CM Globals Chat Widget Integration -->
     <script>
-        window.ComoFXWidgetConfig = {
+        window.CMGlobalsWidgetConfig = {
             position: 'bottom-right',
             // Local development URL - change to production URL when deploying:
-            // chatUrl: 'https://chat.comofx.com/popup.html',
+            // chatUrl: 'https://chat.cmglobals.com/popup.html',
             chatUrl: '/popup.html',
             primaryColor: '#2563EB',
             autoOpen: false
         };
     </script>
-    <script src="/comofx-widget.js"></script>
+    <script src="/cmglobals-widget.js"></script>
 </body>
 
 </html>

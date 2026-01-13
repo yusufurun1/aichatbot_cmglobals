@@ -19,8 +19,8 @@ const PORT = process.env.PORT || 3001;
 // CORS configuration - allow frontend domain
 app.use(cors({
     origin: [
-        'https://chat.comofx.com',
-        'https://a-chatbot-comofx-lttf43djw-yusufurun1s-projects.vercel.app',
+        'https://chat.cmglobals.com',
+        'https://aichatbot-cmglobals.vercel.app',
         'http://localhost:5173', // for local development
         'http://localhost:3000'  // for local development
     ],

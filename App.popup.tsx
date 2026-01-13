@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { SendIcon, LoadingDots, ComoLogoSmall } from './components/IconsPopup';
+import { SendIcon, LoadingDots, CMGlobalsLogoSmall } from './components/IconsPopup';
 import { ChatBubblePopup } from './components/ChatBubblePopup';
 import { Message, Language } from './types';
 import { sendMessage, initializeChat } from './services/geminiService';
@@ -7,7 +7,7 @@ import { SUGGESTIONS } from './constants';
 
 // Popup UI Texts (English)
 const POPUP_UI_TEXT = {
-    title: "ComoFX Assistant",
+    title: "CM Globals Assistant",
     placeholder: "Type your message...",
     sending: "Sending...",
     online: "Online",
@@ -17,7 +17,7 @@ const POPUP_UI_TEXT = {
 // Welcome messages sequence (short, clean)
 const WELCOME_SEQUENCE = [
     "Hello! 👋",
-    "I'm the **ComoFX Assistant**.",
+    "I'm the **CM Globals Assistant**.",
     "How can I help you today?"
 ];
 
@@ -242,23 +242,23 @@ const AppPopup: React.FC = () => {
     };
 
     return (
-        <div className="comofx-popup-widget">
+        <div className="cmglobals-popup-widget">
             {/* Header Bar */}
-            <header className="comofx-popup-header">
-                <div className="comofx-popup-header-left">
-                    <ComoLogoSmall />
-                    <div className="comofx-popup-header-info">
-                        <span className="comofx-popup-title">{POPUP_UI_TEXT.title}</span>
-                        <div className="comofx-popup-status">
-                            <span className="comofx-popup-status-dot"></span>
-                            <span className="comofx-popup-status-text">{POPUP_UI_TEXT.online}</span>
+            <header className="cmglobals-popup-header">
+                <div className="cmglobals-popup-header-left">
+                    <CMGlobalsLogoSmall />
+                    <div className="cmglobals-popup-header-info">
+                        <span className="cmglobals-popup-title">{POPUP_UI_TEXT.title}</span>
+                        <div className="cmglobals-popup-status">
+                            <span className="cmglobals-popup-status-dot"></span>
+                            <span className="cmglobals-popup-status-text">{POPUP_UI_TEXT.online}</span>
                         </div>
                     </div>
                 </div>
                 <button
                     onClick={startNewSession}
                     title="Yeni Sohbet"
-                    className="comofx-popup-reset-btn"
+                    className="cmglobals-popup-reset-btn"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
@@ -267,8 +267,8 @@ const AppPopup: React.FC = () => {
             </header>
 
             {/* Chat Area */}
-            <main className="comofx-popup-body">
-                <div className="comofx-popup-messages">
+            <main className="cmglobals-popup-body">
+                <div className="cmglobals-popup-messages">
                     {messages.map((msg, index) => (
                         <ChatBubblePopup
                             key={msg.id}
@@ -279,11 +279,11 @@ const AppPopup: React.FC = () => {
                     ))}
 
                     {isLoading && (
-                        <div className="comofx-popup-loading">
-                            <div className="comofx-popup-loading-avatar">
-                                <img src="logo-icon.svg" alt="ComoFX" className="comofx-avatar-img" />
+                        <div className="cmglobals-popup-loading">
+                            <div className="cmglobals-popup-loading-avatar">
+                                <img src="logo-icon.svg" alt="CM Globals" className="cmglobals-avatar-img" />
                             </div>
-                            <div className="comofx-popup-loading-bubble">
+                            <div className="cmglobals-popup-loading-bubble">
                                 <LoadingDots />
                             </div>
                         </div>
@@ -293,10 +293,10 @@ const AppPopup: React.FC = () => {
             </main>
 
             {/* Input Area */}
-            <div className="comofx-popup-input-area">
+            <div className="cmglobals-popup-input-area">
                 {/* Quick Suggestions (only show first 4 for popup) */}
                 {messages.length < 8 && !isLoading && (
-                    <div className="comofx-popup-suggestions">
+                    <div className="cmglobals-popup-suggestions">
                         {SUGGESTIONS[language].slice(0, 8).map((chip) => (
                             <button
                                 key={chip.id}
@@ -306,7 +306,7 @@ const AppPopup: React.FC = () => {
                                     await new Promise(r => setTimeout(r, 600)); // Natural "thinking" delay
                                     handleSendMessage(chip.query);
                                 }}
-                                className="comofx-popup-suggestion-chip"
+                                className="cmglobals-popup-suggestion-chip"
                             >
                                 {chip.text}
                             </button>
@@ -314,7 +314,7 @@ const AppPopup: React.FC = () => {
                     </div>
                 )}
 
-                <form onSubmit={onFormSubmit} className="comofx-popup-form">
+                <form onSubmit={onFormSubmit} className="cmglobals-popup-form">
                     <textarea
                         ref={inputRef as any}
                         rows={1}
@@ -339,15 +339,15 @@ const AppPopup: React.FC = () => {
                         }}
                         placeholder={isInitialized ? POPUP_UI_TEXT.placeholder : "Başlatılıyor..."}
                         disabled={!isInitialized || isLoading}
-                        className="comofx-popup-input"
+                        className="cmglobals-popup-input"
                     />
 
-                    <div className="comofx-popup-input-actions">
+                    <div className="cmglobals-popup-input-actions">
                         {/* Send Button */}
                         <button
                             type="submit"
                             disabled={!inputValue.trim() || isLoading}
-                            className="comofx-popup-send-btn"
+                            className="cmglobals-popup-send-btn"
                         >
                             <SendIcon />
                         </button>
