@@ -398,63 +398,82 @@ Question: ${lastUserMessage}
             }
         };
 
-        const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`,
-            {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(requestBody)
-            }
-        );
+        // Retry logic with exponential backoff for 429 errors
+        const maxRetries = 3;
+        let lastError: any = null;
 
-        if (response.ok) {
-            const data = await response.json() as any;
-            let responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I cannot respond right now.";
-            console.log("Response received from Gemini REST API.");
-
-            // Check if chat is too long (force routing to prevent abuse)
-            const messageCount = history.length + 1;
-            const isChatTooLong = messageCount >= MAX_MESSAGES_BEFORE_ROUTING;
-
-            // Parse LLM's routing decision from response
-            let routeToLiveAgent = "false";
-            const routeMatch = responseText.match(/\[\[ROUTE_TO_LIVE_AGENT:(YES|NO)\]\]/);
-
-            if (routeMatch) {
-                routeToLiveAgent = routeMatch[1] === 'YES' ? "true" : "false";
-                // Remove the marker from the visible response
-                responseText = responseText.replace(/\n?\[\[ROUTE_TO_LIVE_AGENT:(YES|NO)\]\]\n?/g, '').trim();
+        for (let attempt = 0; attempt < maxRetries; attempt++) {
+            if (attempt > 0) {
+                const waitTime = Math.pow(2, attempt) * 1000; // 2s, 4s, 8s
+                console.log(`⏳ Rate limited, waiting ${waitTime / 1000}s before retry ${attempt + 1}/${maxRetries}...`);
+                await new Promise(resolve => setTimeout(resolve, waitTime));
             }
 
-            // Force routing if chat is too long (only during business hours)
-            if (isChatTooLong && routeToLiveAgent === "false" && !outsideHours) {
-                routeToLiveAgent = "true";
-                responseText += "\n\n---\n\n*This conversation has been ongoing for a while. For the best support experience, I recommend connecting you with our live support team who can provide more personalized assistance.*";
-                console.log(`📞 Forcing live agent routing: chat has ${messageCount} messages (max: ${MAX_MESSAGES_BEFORE_ROUTING})`);
+            const response = await fetch(
+                `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestBody)
+                }
+            );
+
+            if (response.ok) {
+                const data = await response.json() as any;
+                let responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I cannot respond right now.";
+                console.log("Response received from Gemini REST API.");
+
+                // Check if chat is too long (force routing to prevent abuse)
+                const messageCount = history.length + 1;
+                const isChatTooLong = messageCount >= MAX_MESSAGES_BEFORE_ROUTING;
+
+                // Parse LLM's routing decision from response
+                let routeToLiveAgent = "false";
+                const routeMatch = responseText.match(/\[\[ROUTE_TO_LIVE_AGENT:(YES|NO)\]\]/);
+
+                if (routeMatch) {
+                    routeToLiveAgent = routeMatch[1] === 'YES' ? "true" : "false";
+                    // Remove the marker from the visible response
+                    responseText = responseText.replace(/\n?\[\[ROUTE_TO_LIVE_AGENT:(YES|NO)\]\]\n?/g, '').trim();
+                }
+
+                // Force routing if chat is too long (only during business hours)
+                if (isChatTooLong && routeToLiveAgent === "false" && !outsideHours) {
+                    routeToLiveAgent = "true";
+                    responseText += "\n\n---\n\n*This conversation has been ongoing for a while. For the best support experience, I recommend connecting you with our live support team who can provide more personalized assistance.*";
+                    console.log(`📞 Forcing live agent routing: chat has ${messageCount} messages (max: ${MAX_MESSAGES_BEFORE_ROUTING})`);
+                }
+
+                // If outside business hours, disable live agent routing completely
+                if (outsideHours && routeToLiveAgent === "true") {
+                    console.log('🌙 Outside business hours - live agent routing disabled');
+                    routeToLiveAgent = "false";
+                    // Add message about live support availability
+                    responseText += "\n\n---\n\n*Live support is available during business hours (09:00 AM - 06:00 PM AEST). Our AI assistant is here to help you 24/7.*";
+                }
+
+                if (routeToLiveAgent === "true") {
+                    console.log(`📞 Routing to live agent requested (LLM decision: ${routeMatch ? routeMatch[1] : 'N/A'}, Chat too long: ${isChatTooLong})`);
+                }
+
+                return { text: responseText, routeToLiveAgent };
             }
 
-            // If outside business hours, disable live agent routing completely
-            if (outsideHours && routeToLiveAgent === "true") {
-                console.log('🌙 Outside business hours - live agent routing disabled');
-                routeToLiveAgent = "false";
-                // Add message about live support availability
-                responseText += "\n\n---\n\n*Live support is available during business hours (09:00 AM - 06:00 PM AEST). Our AI assistant is here to help you 24/7.*";
+            // Handle 429 - retry
+            if (response.status === 429) {
+                lastError = new Error("RATE_LIMIT_EXCEEDED");
+                console.log(`⚠️ Rate limited on attempt ${attempt + 1}/${maxRetries}`);
+                continue; // Go to next retry
             }
 
-            if (routeToLiveAgent === "true") {
-                console.log(`📞 Routing to live agent requested (LLM decision: ${routeMatch ? routeMatch[1] : 'N/A'}, Chat too long: ${isChatTooLong})`);
-            }
-
-            return { text: responseText, routeToLiveAgent };
+            // Other errors - don't retry
+            const errorData = await response.json().catch(() => ({}));
+            console.error(`❌ Gemini API Error [${response.status}]:`, JSON.stringify(errorData, null, 2));
+            throw new Error(`Gemini API Error: ${response.status} ${(errorData as any).error?.message || response.statusText}`);
         }
 
-        if (response.status === 429) {
-            throw new Error("RATE_LIMIT_EXCEEDED");
-        }
-
-        const errorData = await response.json().catch(() => ({}));
-        console.error(`❌ Gemini API Error [${response.status}]:`, JSON.stringify(errorData, null, 2));
-        throw new Error(`Gemini API Error: ${response.status} ${(errorData as any).error?.message || response.statusText}`);
+        // All retries exhausted
+        throw lastError || new Error("RATE_LIMIT_EXCEEDED");
 
     } catch (error: any) {
         console.error("❌ Gemini API Catch Detail:", {
