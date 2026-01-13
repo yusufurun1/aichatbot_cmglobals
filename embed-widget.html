@@ -1,0 +1,283 @@
+<!-- CM Globals AI Chat Widget - Embed Code -->
+<!-- Add this code before the closing </body> tag -->
+
+<style>
+    /* CM Globals Chat Widget Styles */
+    .cmg-chat-widget {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 999999;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* Floating Button */
+    .cmg-chat-trigger {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #328096 0%, #113d49 100%);
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow:
+            0 6px 24px rgba(50, 128, 150, 0.4),
+            0 2px 8px rgba(17, 61, 73, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .cmg-chat-trigger:hover {
+        transform: scale(1.08) translateY(-2px);
+        box-shadow:
+            0 10px 32px rgba(50, 128, 150, 0.5),
+            0 4px 12px rgba(17, 61, 73, 0.4);
+    }
+
+    .cmg-chat-trigger:active {
+        transform: scale(0.95);
+    }
+
+    /* Question Icon */
+    .cmg-chat-trigger svg {
+        width: 28px;
+        height: 28px;
+        fill: #ffffff;
+        transition: transform 0.3s ease;
+    }
+
+    .cmg-chat-trigger:hover svg {
+        transform: rotate(15deg);
+    }
+
+    /* Close Icon (when chat is open) */
+    .cmg-chat-trigger.active svg.cmg-icon-question {
+        display: none;
+    }
+
+    .cmg-chat-trigger svg.cmg-icon-close {
+        display: none;
+    }
+
+    .cmg-chat-trigger.active svg.cmg-icon-close {
+        display: block;
+    }
+
+    /* Tooltip - Need Information */
+    .cmg-chat-tooltip {
+        position: absolute;
+        right: 72px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #ffffff;
+        color: #113d49;
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        white-space: nowrap;
+        box-shadow: 0 4px 16px rgba(17, 61, 73, 0.15);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        pointer-events: none;
+    }
+
+    .cmg-chat-tooltip::after {
+        content: '';
+        position: absolute;
+        right: -6px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: 6px solid transparent;
+        border-left-color: #ffffff;
+    }
+
+    /* Show tooltip animation */
+    .cmg-chat-tooltip.show {
+        opacity: 1;
+        visibility: visible;
+        animation: cmg-tooltip-bounce 0.5s ease;
+    }
+
+    @keyframes cmg-tooltip-bounce {
+
+        0%,
+        100% {
+            transform: translateY(-50%) translateX(0);
+        }
+
+        50% {
+            transform: translateY(-50%) translateX(-5px);
+        }
+    }
+
+    /* Pulse animation on button */
+    .cmg-chat-trigger::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #328096 0%, #113d49 100%);
+        animation: cmg-pulse-ring 2s ease-out infinite;
+        z-index: -1;
+    }
+
+    @keyframes cmg-pulse-ring {
+        0% {
+            transform: scale(1);
+            opacity: 0.6;
+        }
+
+        100% {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+
+    /* Chat Popup Container */
+    .cmg-chat-popup {
+        position: absolute;
+        bottom: 75px;
+        right: 0;
+        width: 380px;
+        height: 550px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow:
+            0 25px 60px rgba(17, 61, 73, 0.25),
+            0 10px 30px rgba(50, 128, 150, 0.15);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px) scale(0.95);
+        transition: all 0.3s ease;
+        background: #ffffff;
+    }
+
+    .cmg-chat-popup.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+    }
+
+    .cmg-chat-popup iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 480px) {
+        .cmg-chat-widget {
+            bottom: 16px;
+            right: 16px;
+        }
+
+        .cmg-chat-trigger {
+            width: 56px;
+            height: 56px;
+        }
+
+        .cmg-chat-popup {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+        }
+
+        .cmg-chat-tooltip {
+            display: none;
+        }
+    }
+</style>
+
+<!-- Widget HTML -->
+<div class="cmg-chat-widget">
+    <!-- Tooltip -->
+    <div class="cmg-chat-tooltip" id="cmgTooltip">
+        💬 Need Information?
+    </div>
+
+    <!-- Trigger Button -->
+    <button class="cmg-chat-trigger" id="cmgChatTrigger" aria-label="Open chat">
+        <!-- Question Icon -->
+        <svg class="cmg-icon-question" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
+        </svg>
+        <!-- Close Icon -->
+        <svg class="cmg-icon-close" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+        </svg>
+    </button>
+
+    <!-- Chat Popup -->
+    <div class="cmg-chat-popup" id="cmgChatPopup">
+        <iframe src="https://aichatbot-cmglobals.vercel.app/popup.html" title="CM Globals AI Chat" loading="lazy">
+        </iframe>
+    </div>
+</div>
+
+<script>
+    (function () {
+        const trigger = document.getElementById('cmgChatTrigger');
+        const popup = document.getElementById('cmgChatPopup');
+        const tooltip = document.getElementById('cmgTooltip');
+        let isOpen = false;
+        let tooltipInterval;
+
+        // Toggle chat
+        trigger.addEventListener('click', function () {
+            isOpen = !isOpen;
+
+            if (isOpen) {
+                popup.classList.add('open');
+                trigger.classList.add('active');
+                tooltip.classList.remove('show');
+                clearInterval(tooltipInterval);
+            } else {
+                popup.classList.remove('open');
+                trigger.classList.remove('active');
+                startTooltipAnimation();
+            }
+        });
+
+        // Show tooltip periodically
+        function showTooltip() {
+            if (!isOpen) {
+                tooltip.classList.add('show');
+                setTimeout(() => {
+                    tooltip.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        function startTooltipAnimation() {
+            // Show immediately after 2 seconds
+            setTimeout(showTooltip, 2000);
+            // Then every 30 seconds
+            tooltipInterval = setInterval(showTooltip, 30000);
+        }
+
+        // Start tooltip animation
+        startTooltipAnimation();
+
+        // Close on escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && isOpen) {
+                popup.classList.remove('open');
+                trigger.classList.remove('active');
+                isOpen = false;
+                startTooltipAnimation();
+            }
+        });
+    })();
+</script>
