@@ -147,9 +147,9 @@ export const COMPANY_FACTS = {
   },
   parent_company: {
     name: "Cortez Morgan Family Company",
-    history: "100-year history",
+    history: "Modern Global Brokerage founded in 2025",
     industries: ["Mining", "Iron-Steel", "Precious Earth Mines", "Machine Pieces Industry"],
-    brokerage_since: 2012
+    brokerage_since: 2025
   },
   regulation: {
     authorities: [
@@ -163,7 +163,7 @@ export const COMPANY_FACTS = {
       {
         name: "FINTRAC",
         full_name: "Financial Transactions and Reports Analysis Centre of Canada",
-        entity: "COMO TRADE PTY LIMITED Canada",
+        entity: "CM Globals Canada",
         license_number: "MSB: M21737310",
         description: "Compliant with Canadian anti-money laundering regulations"
       }
@@ -387,12 +387,12 @@ Your job: answer questions using **official website-grounded facts** and be expl
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 1) QUICK IDENTITY SNAPSHOT (SITE-DERIVED)
-- Brand: CM Globals (subsidiary of Cortez Morgan Family Company with 100-year history)
+- Brand: CM Globals (Modern Global Brokerage founded in 2025)
 - Positioning: "Trust Meets Power" - Global Markets + Unlimited Opportunities
 - Core claims: 200,000+ investors, 100+ instruments, 12 countries, 6 Liquidity Providers, 24M AUD capital
 - Headquarters: Suite 118, 252 Russell Street, Melbourne VIC 3000, Australia
 - Primary platform: MetaTrader 5 (MT5)
-- Brokerage services since: 2012
+- Brokerage services: Launched in 2025 as a new standard in transparency
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 2) REGULATION & LICENSE NUMBERS
@@ -404,7 +404,7 @@ CM Globals has TWO regulatory licenses:
 - Verify: https://connectonline.asic.gov.au/RegistrySearch/
 
 **FINTRAC (Canada)**
-- Entity: COMO TRADE PTY LIMITED Canada
+- Entity: CM Globals Canada
 - MSB Number: M21737310
 - Verify: https://www10.fintrac-canafe.gc.ca/msb-esm/
 
@@ -585,7 +585,7 @@ export const FAQ_KNOWLEDGE_BASE = {
   general_company: [
     {
       question: "What is CM Globals?",
-      answer: "CM Globals is a subsidiary of Cortez Morgan Family Company which has a long history of 100 years. Since 2012, CM Globals is a global brokerage house transmitting orders instantly into real markets. We are regulated by ASIC (Australia) and FINTRAC (Canada), serving 200,000+ investors across 12 countries."
+      answer: "CM Globals is a modern global brokerage founded in 2025. We provide a transparent and powerful trading environment for our clients. We are regulated by ASIC (Australia) and FINTRAC (Canada), serving 200,000+ investors across 12 countries."
     },
     {
       question: "What services does CM Globals offer?",
@@ -601,7 +601,7 @@ export const FAQ_KNOWLEDGE_BASE = {
     },
     {
       question: "What makes CM Globals different from other brokers?",
-      answer: "CM Globals stands out with: Dual regulation (ASIC + FINTRAC), 100-year parent company history, 24M AUD paid-in capital, 5x investor equity maintained in blocked accounts, commission-free trading, MetaTrader 5 platform, and multiple award recognitions including Most Transparent Broker and Best Customer Service."
+      answer: "CM Globals stands out with: Dual regulation (ASIC + FINTRAC), 24M AUD paid-in capital, 5x investor equity maintained in blocked accounts, commission-free trading, MetaTrader 5 platform, and multiple award recognitions including Most Transparent Broker and Best Customer Service."
     },
     {
       question: "Is trading with CM Globals safe?",

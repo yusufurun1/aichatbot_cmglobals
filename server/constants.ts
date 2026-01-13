@@ -156,7 +156,7 @@ export const COMPANY_FACTS = {
         name: "Cortez Morgan Family Company",
         history: "Modern Global Brokerage founded in 2025",
         industries: ["Mining", "Iron-Steel", "Precious Earth Mines", "Machine Pieces Industry"],
-        brokerage_since: 2012
+        brokerage_since: 2025
     },
     regulation: {
         authorities: [
