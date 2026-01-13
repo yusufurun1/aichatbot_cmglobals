@@ -1,7 +1,0 @@
-{
-  "name": "CM Globals AI Support",
-  "description": "A dedicated AI support agent for CM Globals, designed to assist traders with inquiries about platforms, accounts, and market instruments.",
-  "requestFramePermissions": [
-    "microphone"
-  ]
-}
