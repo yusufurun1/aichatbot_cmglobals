@@ -1,0 +1,23 @@
+[
+    {
+        "question": "What is the correct FSCA license number for ComoFX?",
+        "ground_truth": "The correct FSCA license number is 47645.",
+        "context": [
+            "The ONLY correct FSCA License Number is 47645."
+        ]
+    },
+    {
+        "question": "What is the minimum deposit for a Micro account?",
+        "ground_truth": "The minimum deposit for a Micro account is $10.",
+        "context": [
+            "Micro: min deposit $10, balanced spreads, bonus up to 100%, no commission, 100+ instruments, nano lots, max leverage 1:500"
+        ]
+    },
+    {
+        "question": "Does ComoFX offer a VPS service?",
+        "ground_truth": "ComoFX offers low latency execution and co-location, and often supports VPS for automated trading, though specific free VPS terms usually require a minimum deposit/volume.",
+        "context": [
+            "<50ms avg latency, 99.9% uptime guarantee, 4 data centers (London, Dubai, Singapore, New York)"
+        ]
+    }
+]

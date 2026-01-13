@@ -1,0 +1,7 @@
+{
+  "name": "ComoFX AI Support",
+  "description": "A dedicated AI support agent for ComoFX, designed to assist traders with inquiries about platforms, accounts, and market instruments.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

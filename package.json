@@ -1,0 +1,46 @@
+{
+  "name": "comofx-ai-support",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"node --import tsx server/index.ts\"",
+    "dev:frontend": "vite",
+    "dev:server": "node --import tsx server/index.ts",
+    "build": "vite build",
+    "build-vercel": "vite build",
+    "preview": "vite preview",
+    "ingest": "ts-node scripts/ingest-website.ts"
+  },
+  "dependencies": {
+    "@google/genai": "^1.31.0",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "turndown-plugin-gfm": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.35",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.19.3",
+    "@types/turndown": "^5.0.6",
+    "@vercel/node": "^3.0.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "autoprefixer": "^10.4.23",
+    "axios": "^1.13.2",
+    "cheerio": "^1.1.2",
+    "dotenv": "^17.2.3",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "turndown": "^7.2.2",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  }
+}
