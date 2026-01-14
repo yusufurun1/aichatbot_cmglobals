@@ -603,6 +603,8 @@
 }
 
 .cmglobals-md-table {
+    width: max-content;
+    /* Force table to respect content width */
     min-width: 100%;
     font-size: 11px;
     border-collapse: collapse;
@@ -613,21 +615,23 @@
 }
 
 .cmglobals-md-th {
-    padding: 6px 8px;
+    padding: 8px 10px;
     text-align: left;
     font-weight: 700;
     color: var(--cm-primary-dark);
     border-bottom: 1px solid rgba(50, 128, 150, 0.15);
     white-space: nowrap;
-    min-width: 60px;
+    min-width: 80px;
+    /* Increased min-width */
 }
 
 .cmglobals-md-td {
-    padding: 6px 8px;
+    padding: 8px 10px;
     border-bottom: 1px solid rgba(50, 128, 150, 0.08);
     color: var(--cm-text-main);
     vertical-align: top;
-    min-width: 70px;
+    min-width: 90px;
+    /* Increased min-width to prevent squashing */
 }
 
 .cmglobals-md-tr:last-child .cmglobals-md-td {
