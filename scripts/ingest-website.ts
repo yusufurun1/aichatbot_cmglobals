@@ -27,24 +27,34 @@ turndownService.addRule('remove-scripts', {
 });
 
 // Configuration
-const BASE_URL = 'https://cmglobals.com';
+const BASE_URL = 'https://cmglobalswebsite.netlify.app';
 const OUTPUT_FILE = path.join(process.cwd(), 'public', 'knowledge_base.json');
 const MAX_DEPTH = 5; // Deep dive mode
-const IGNORE_PATTERNS = ['/login', '/register', '/demo', '?lang=', '#', 'mailto:', 'tel:', 'javascript:', '.jpg', '.png', '.pdf'];
+const IGNORE_PATTERNS = [
+    '/login',
+    '/register',
+    '/demo',
+    '?lang=',
+    '#',
+    'mailto:',
+    'tel:',
+    'javascript:',
+    '.jpg',
+    '.png',
+    '.pdf',
+    '/knowledge-hub',
+    'knowledge-hub'
+];
 
 // Explicitly add critical sections that might be missed or are important entry points
 const SEED_URLS = [
-    'https://cmglobals.com/',
-    'https://cmglobals.com/trading/account-types',
-    'https://cmglobals.com/trading/markets',
-    'https://cmglobals.com/trading/platforms',
-    'https://cmglobals.com/partnership/ib-program',
-    'https://cmglobals.com/corporate/about-us',
-    'https://cmglobals.com/corporate/regulation',
-    'https://cmglobals.com/knowledge-hub',
-    'https://cmglobals.com/knowledge-hub/blog',
-    'https://cmglobals.com/knowledge-hub/guides',
-    'https://cmglobals.com/knowledge-hub/glossary'
+    'https://cmglobalswebsite.netlify.app/',
+    'https://cmglobalswebsite.netlify.app/trading/account-types',
+    'https://cmglobalswebsite.netlify.app/trading/markets',
+    'https://cmglobalswebsite.netlify.app/trading/platforms',
+    'https://cmglobalswebsite.netlify.app/partnership/ib-program',
+    'https://cmglobalswebsite.netlify.app/corporate/about-us',
+    'https://cmglobalswebsite.netlify.app/corporate/regulation'
 ];
 
 interface KnowledgeChunk {

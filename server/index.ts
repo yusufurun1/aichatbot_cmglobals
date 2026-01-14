@@ -30,6 +30,9 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Serve static files from the public directory (specifically for knowledge_base.json)
+app.use(express.static(path.join(__dirname, '../public')));
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });

@@ -87,7 +87,7 @@ export const SUGGESTIONS: Record<Language, Suggestion[]> = {
 // Extra structured data (optional but useful for routing + grounded answers)
 export const SITE_URLS = {
   base: "https://cmglobalswebsite.netlify.app",
-  www_base: "https://www.cmglobals.com",
+  www_base: "https://cmglobalswebsite.netlify.app",
 
   portal: "https://client.cmglobals.com",
   register: "https://client.cmglobals.com/register",
