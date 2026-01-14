@@ -595,16 +595,16 @@
 .cmglobals-md-table-wrapper {
     overflow-x: auto;
     width: 100%;
-    margin: 12px 0;
-    border-radius: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
     border: 1px solid rgba(50, 128, 150, 0.15);
     -webkit-overflow-scrolling: touch;
-    box-shadow: 0 2px 8px rgba(17, 61, 73, 0.04);
+    box-shadow: 0 2px 6px rgba(17, 61, 73, 0.04);
 }
 
 .cmglobals-md-table {
     min-width: 100%;
-    font-size: 12px;
+    font-size: 11px;
     border-collapse: collapse;
 }
 
@@ -613,18 +613,21 @@
 }
 
 .cmglobals-md-th {
-    padding: 10px 12px;
+    padding: 6px 8px;
     text-align: left;
     font-weight: 700;
     color: var(--cm-primary-dark);
     border-bottom: 1px solid rgba(50, 128, 150, 0.15);
     white-space: nowrap;
+    min-width: 60px;
 }
 
 .cmglobals-md-td {
-    padding: 10px 12px;
+    padding: 6px 8px;
     border-bottom: 1px solid rgba(50, 128, 150, 0.08);
     color: var(--cm-text-main);
+    vertical-align: top;
+    min-width: 70px;
 }
 
 .cmglobals-md-tr:last-child .cmglobals-md-td {
